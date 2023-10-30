@@ -32,7 +32,7 @@ Este proyecto se ha desarrollado utilizando una variedad de tecnologías y herra
 
 - **React.js:** React.js es el corazón de nuestra aplicación, permitiéndonos crear componentes reutilizables y una interfaz de usuario dinámica.
 
-- **Bootstrap:** Utilizamos Bootstrap para crear una interfaz de usuario receptiva y atractiva que se adapte a dispositivos de diferentes tamaños.
+- **NextUI:** Utilizamos NextUI para crear una interfaz de usuario receptiva y atractiva que se adapte a dispositivos de diferentes tamaños.
 
 - **HTML:** El marcado HTML forma la estructura básica de nuestras páginas web.
 
