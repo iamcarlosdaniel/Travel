@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel</title>
+    
+</head>
+<body>
+
+    <h1>Travel App</h1>
+    <h3 id="user"></h3>
+
+    <button class="btn btn-danger" onclick="logout()">Logout</button>
+
+    <form id="taskForm">
+        <label for="task">Nueva tarea:</label>
+        <input type="text" id="task" required>
+        <button type="button" onclick="addTask()">Agregar tarea</button>
+        <button type="button" onclick="displayTasks()">Mostrar</button>
+    </form>
+
+    <ul id="taskList"></ul>
+
+    <!-- Agrega la referencia a Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-firestore.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+
+    <script>
+        // Configura tu proyecto de Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBByldVs4IsfPI1LdN2w5aWU08RhYAUS10",
+            authDomain: "travel-16af7.firebaseapp.com",
+            projectId: "travel-16af7",
+            storageBucket: "travel-16af7.appspot.com",
+            messagingSenderId: "399287448089",
+            appId: "1:399287448089:web:70dd7aca936e193afd3088",
+            measurementId: "G-YF7D0GCGKR"
+        };
+
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Obtiene una referencia a la base de datos Firestore
+        const db = firebase.firestore();
+
+        let userUid; // Variable global para almacenar el UID del usuario
+
+        firebase.auth().onAuthStateChanged((user)=>{
+            if(!user){
+                location.replace("index.html")
+            }else{
+                userUid = user.uid; // Almacena el UID del usuario
+                document.getElementById("user").innerHTML = "Hello, "+user.email + "<br>" + user.uid;
+
+                //Mostrar Tareas
+                displayTasks();
+            }
+        })
+
+        function logout(){
+            firebase.auth().signOut()
+        }
+
+        // Función para agregar una tarea a Firestore
+function addTask() {
+    const taskInput = document.getElementById('task');
+    const task = taskInput.value;
+
+    // Asegúrate de que la tarea no esté vacía
+    if (task.trim() !== '') {
+        // Crea una referencia al documento del usuario
+        const userRef = db.collection('users').doc(userUid);
+
+        // Agrega la tarea a la colección 'tasks' con la referencia al usuario
+        db.collection('tasks').add({
+            task: task,
+            usuario: userRef // Utiliza la referencia al documento del usuario
+        })
+        .then(function(docRef) {
+            console.log("Tarea agregada con ID: ", docRef.id);
+            // Limpiar el campo de entrada después de agregar la tarea
+            taskInput.value = '';
+        })
+        .catch(function(error) {
+            console.error("Error al agregar tarea: ", error);
+        });
+    }
+}
+
+
+        // Función para mostrar las tareas en la lista
+        // Función para mostrar las tareas en la lista
+function displayTasks() {
+    const taskList = document.getElementById('taskList');
+
+    // Limpia la lista antes de volver a cargar las tareas
+    taskList.innerHTML = '';
+
+    // Obtiene todas las tareas de la colección 'tasks' filtradas por el UID del usuario
+    const userRef = db.collection('users').doc(userUid);
+
+    db.collection('tasks').where('usuario', '==', userRef).get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            console.log(doc.id, " => ", doc.data());
+            const task = doc.data().task;
+            const li = document.createElement('li');
+            li.textContent = task;
+            taskList.appendChild(li);
+        });
+    })
+    .catch(function(error) {
+        console.error("Error al obtener tareas: ", error);
+    });
+
+}
+
+
+        // Muestra las tareas al cargar la página
+        
+    </script>
+</body>
+</html>

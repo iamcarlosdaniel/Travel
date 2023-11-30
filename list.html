@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tareas</title>
+  <style>
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Lista de Tareas</h1>
+
+<input type="text" id="taskInput" placeholder="Nueva tarea">
+<button onclick="addTask()">Agregar Tarea</button>
+
+<ul id="taskList"></ul>
+
+<script>
+  let tasks = [1,2,3,4,5,6];
+
+  function renderTasks() {
+    const taskList = document.getElementById('taskList');
+    taskList.innerHTML = '';
+
+    tasks.forEach((task, index) => {
+      const li = document.createElement('li');
+      li.innerHTML = `
+        <span>${task}</span>
+        <button onclick="moveTask(${index}, 'up')">↑</button>
+        <button onclick="moveTask(${index}, 'down')">↓</button>
+        <button onclick="deleteTask(${index})">Eliminar</button>
+      `;
+      taskList.appendChild(li);
+    });
+  }
+
+  function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const newTask = taskInput.value.trim();
+
+    if (newTask !== '') {
+      tasks.push(newTask);
+      taskInput.value = '';
+      renderTasks();
+    }
+  }
+
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+    renderTasks();
+  }
+
+  function moveTask(index, direction) {
+    const newIndex = direction === 'up' ? index - 1 : index + 1;
+
+    if (newIndex >= 0 && newIndex < tasks.length) {
+      const temp = tasks[index];
+      tasks[index] = tasks[newIndex];
+      tasks[newIndex] = temp;
+      renderTasks();
+    }
+
+    console.log("Nuevo Orden");
+    //imprime el array
+    for(i=0; i<tasks.length; i++){
+        console.log(tasks[i]);
+    }
+  }
+
+  renderTasks(); // Renderiza las tareas iniciales si las hubiera
+</script>
+
+</body>
+</html>

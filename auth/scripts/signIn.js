@@ -9,7 +9,7 @@ document.getElementById("signInForm").addEventListener("submit", (event) => {
 
 firebase.auth().onAuthStateChanged((user)=>{
       if(user){
-          location.replace("../welcome/principal.html")
+          location.replace("../dashboard/dashboard.html")
       }
  })
 

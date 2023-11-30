@@ -50,6 +50,7 @@ function signUp() {
 
 function saveUserDataToFirestore(uid, firstName, lastName, email, username) {
 
+    const modalWarning = new bootstrap.Modal(document.getElementById("modalWarning"));
     // Datos del usuario a guardar en Firestore
     const userData = {
         uid: uid,
@@ -67,13 +68,13 @@ function saveUserDataToFirestore(uid, firstName, lastName, email, username) {
             // Ejemplo de delay de 2000 milisegundos (2 segundos)
             setTimeout(function() {
                 // Tu código aquí
-                location.replace("../task.html")
+                location.replace("../dashboard/dashboard.html")
             }, 2000);
         })
         .catch((error) => {
             console.error("Error al guardar datos en Firestore:", error);
             document.getElementById("modalMessage").innerHTML = "Oops! It appears that something went wrong, and we encountered an unexpected error. Our team has been notified, and we're working hard to resolve the issue as quickly as possible. In the meantime, please try again later.";
-        modalWarning.show();
+            modalWarning.show();
         });
 }
 
