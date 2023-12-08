@@ -5,39 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <!--Bootstrap Icons-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
   <title>Lista con Bootstrap 5</title>
 </head>
 <body>
 
-<div class="container mt-4">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          Item 1
-          <ul class="list-group mt-2 list-group-flush">
-            <li class="list-group-item">Subítem 1.1</li>
-            <li class="list-group-item">Subítem 1.2</li>
-            <li class="list-group-item">Subítem 1.3</li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-          Item 2
-          <ul class="list-group mt-2 list-group-flush">
-            <li class="list-group-item">Subítem 2.1</li>
-            <li class="list-group-item">Subítem 2.2</li>
-            <li class="list-group-item">Subítem 2.3</li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-          Item 3
-          <ul class="list-group mt-2 list-group-flush">
-            <li class="list-group-item">Subítem 3.1</li>
-            <li class="list-group-item">Subítem 3.2</li>
-            <li class="list-group-item">Subítem 3.3</li>
-          </ul>
-        </li>
-      </ul>
-    
+<div class="container mt-4" style="width: 500px;">
+  <button id="boton1" onmouseenter="handleHover(this, true)" onmouseleave="handleHover(this, false)" class="btn btn-primary">
+    <i class="bi bi-plus-circle fs-5 me-2 iconRouteInfo"></i>
+    Botón 1
+  </button>
+
+  <button id="boton2" onmouseenter="handleHover(this, true)" onmouseleave="handleHover(this, false)" class="btn btn-primary">
+    <i class="bi bi-plus-circle fs-5 me-2 iconRouteInfo"></i>
+    Botón 2
+  </button>
 </div>
+
+<script>
+  function handleHover(btn, isHoverIn) {
+    if (isHoverIn) {
+      btn.innerHTML = '<i class="bi bi-check2-circle fs-5 me-2 iconRouteInfo"></i> ¡Hover!';
+    } else {
+      btn.innerHTML = '<i class="bi bi-plus-circle fs-5 me-2 iconRouteInfo"></i> Botón 1';
+    }
+  }
+</script>
+
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

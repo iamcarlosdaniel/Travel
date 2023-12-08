@@ -1,169 +1,113 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Carlos Daniel Menchaca Arauz">
     <link rel="icon" type="image/x-icon" href="../assets/images/logo.png">
     <title>Dashboard</title>
-
     <!--Boostrat-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <!--Bootstrap Icons-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!--Bootstrap Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> 
   </head>
-  <body  >
+<body>
 
-<div class="col-lg-8 mx-auto p-3 my-2 ">
-    
+  <div class="d-flex flex-column align-items-center justify-content-center vh-100 w-100" id="loading">
+    <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 
-  <main>
-    <div class="row g-2">
-      <div class="col-md-5 mb-2">
-        <div class="card " style="height: 250px;">
+  <div class="col-lg-9 mx-auto p-3 my-2 d-none" id="dashboard">
+    <main>
+      <div class="row g-2">
+        <div class="col-md-5 mb-2">
+          <div class="card " style="height: 250px;">
             <div class="card-body  m-3">
-                
-                <h5 class="card-title text-body-emphasis">Welcome back,</h5>
-                <h1 class="card-text text-body-emphasis text-truncate overflow-hidden" id="username">...</h1>
-                <p class="text-muted mb-1" id="userLocation"><i class="bi bi-geo-alt-fill"></i> Loading...</p>
-                <p class="text-muted" id="userPlacesVisited"><i class="bi bi-map-fill"></i> Loading...</p>
-                <a href="" class="icon-link text-decoration-none " data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
-                  <i class="bi-gear-fill"></i>
-                  Settings
-                </a>
-                <!-- <button class="btn btn-danger" onclick="logout()">Logout</button> -->
-                
+              <h5 class="card-title text-body-emphasis">Welcome back,</h5>
+              <h1 class="card-text text-body-emphasis text-truncate overflow-hidden" id="username">...</h1>
+              <p class="text-muted mb-1" id="userLocation"><i class="bi bi-geo-alt-fill"></i> Santa Cruz de la Sierra</p>
+              <p class="text-muted" id="userPlacesVisited"><i class="bi bi-map-fill"></i> 210 Places Visited</p>
+              <a href="" class="icon-link text-decoration-none " data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+              <i class="bi-gear-fill"></i>
+                Settings
+              </a>
             </div>
-        </div>
-    </div>
-    
-    <div class="col-md-7 mb-3">
-      <div class="card" style="height: 250px; overflow-y: auto;">
-        <div class="card-body">
-
-          <div class="list-group list-group-horizontal">
-            <a href="#" class="list-group-item list-group-item-action mb-2 d-flex align-items-center justify-content-center" aria-current="true" data-bs-toggle="modal" data-bs-target="#modalAddNewRouteDescription">
-              <i class="bi bi-plus-circle fs-5 me-2"></i>
-              Add new route
-            </a>
-            <a href="#" class="list-group-item list-group-item-action mb-2 d-flex align-items-center justify-content-center" aria-current="true" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-              <i class="bi bi-list-task fs-4 me-2"></i></i>
-              View my routes
-            </a>
-          </div>
-
-          
-
-          <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true" data-bs-toggle="modal" data-bs-target="#modalTouristRoute">
-              <div class="d-flex w-100 justify-content-between">
-                <p class="fs-5 mb-1">Sendero Histórico</p>
-
-                <small>In progress</small>
-              </div>
-              <p class="mb-1 text-truncate overflow-hidden">Descubre la fascinante historia de Santa Cruz de la Sierra a lo largo de este sendero, que te lleva a través de los hitos históricos más destacados de la ciudad. Desde antiguas plazas hasta edificios coloniales, cada paso te sumerge en el pasado que ha dado forma a esta encantadora región.</p>
-              <small>And some small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <p class="fs-5 mb-1">Viaje Cultural</p>
-                <small class="text-body-secondary">3 days ago</small>
-              </div>
-              <p class="mb-1 text-truncate overflow-hidden">Sumérgete en la diversidad cultural de Santa Cruz de la Sierra a través de este viaje único. Desde coloridos mercados locales hasta eventos culturales vibrantes, experimentarás la rica mezcla de tradiciones que hacen de esta ciudad un crisol de culturas, donde la música, la danza y la gastronomía se entrelazan en una experiencia inolvidable.</p>
-              <small class="text-body-secondary">And some muted small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <p class="fs-5 mb-1">Sendero del Arte</p>
-                <small class="text-body-secondary">5 days ago</small>
-              </div>
-              <p class="mb-1 text-truncate overflow-hidden">Un recorrido que destaca la efervescencia artística de Santa Cruz de la Sierra. Desde galerías contemporáneas hasta murales callejeros, cada rincón de este sendero está impregnado de expresiones creativas. Disfruta de la diversidad de estilos que reflejan la creatividad y la vitalidad del escenario artístico local.</p>
-              <small class="text-body-secondary">And some muted small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <p class="fs-5 mb-1">Ruta del Renacimiento</p>
-                <small class="text-body-secondary">1 week ago</small>
-              </div>
-              <p class="mb-1 text-truncate overflow-hidden">Esta ruta te lleva a través de los lugares que han experimentado un renacimiento en Santa Cruz de la Sierra. Desde revitalizadas áreas urbanas hasta proyectos de desarrollo sostenible, descubrirás cómo la ciudad ha renovado su energía y ha abrazado el futuro sin perder de vista su rica herencia.</p>
-              <small class="text-body-secondary">And some muted small print.</small>
-            </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <p class="fs-5 mb-1">Camino del Viajero</p>
-                <small class="text-body-secondary">2 weeks ago</small>
-              </div>
-              <p class="mb-1 text-truncate overflow-hidden">Para los aventureros y amantes de la naturaleza, este camino te lleva por los tesoros naturales de los alrededores de Santa Cruz de la Sierra. Desde exuberantes bosques hasta paisajes montañosos, sigue el camino del viajero para explorar la belleza natural que define esta región boliviana.</p>
-              <small class="text-body-secondary">And some muted small print.</small>
-            </a>
           </div>
         </div>
+        <div class="col-md-7 mb-3">
+          <div class="card" style="height: 250px; overflow-y: auto;">
+            <div class="card-body">
+              <div class="list-group list-group-horizontal">
+                <a href="#" class="list-group-item list-group-item-action mb-2 d-flex align-items-center justify-content-center" aria-current="true" data-bs-toggle="modal" data-bs-target="#modalAddNewRouteDescription">
+                  <i class="bi bi-plus-circle fs-5 me-2"></i>
+                  Add new route
+                </a>
+                <a href="#" class="list-group-item list-group-item-action mb-2 d-flex align-items-center justify-content-center" aria-current="true" data-bs-toggle="offcanvas" data-bs-target="#MyRoutes" aria-controls="offcanvasExample">
+                  <i class="bi bi-list-task fs-4 me-2"></i></i>
+                  View my routes
+                </a>
+              </div>
+              <div class="list-group" id="listFeedRoutes">
+                <!--Informacion de la rutas del usuario-->
+              </div>
+            </div>
+          </div>
+        </div>  
       </div>
-    </div>
-    
-    </div>
-
-    <div class="row g-2">
-      <div class="col-md-8 mb-2">
-        <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner" id="carousel-inner">
-              
-
-              
-
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+      <div class="row g-2">
+        <div class="col-md-7 mb-2">
+          <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" id="carousel-inner">
+              <!--Contenido del Carousel-->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
-          </button>
-      </div>
-      </div>
-
-      <div class="col-md-4 mb-3">
-        <div class="card text-center" style="height: 230px;">
-          <div class="card-body text-center m-2" >
-                <h5 class="card-title text-body-emphasis">Next place</h5>
-                <h1 class="card-text text-body-emphasis">12:30</h1>
-                <p href="" class="text-muted mb-1 text-truncate overflow-hidden"><i class="bi bi-geo-alt-fill"></i> Catedral de San Lorenzo</p>
-                <p href="" class="text-muted text-truncate overflow-hidden"><i class="bi bi-sign-turn-right"></i> Sendero Historico</p>
-                <a href="#" class="icon-link text-decoration-none ">
-                  <i class="bi-map-fill"></i>
-                  How to get
-                </a>
-          </div>
+            </button>
         </div>
-        
+        </div>
+        <div class="col-md-5 mb-3">
+          <div class="card position-relative">
+            <video src="../assets/videos/uyuni.mp4" class="card-img w-100" alt="" style="object-fit: cover; height: 230px; filter: brightness(0.5);" autoplay loop muted>
+                Tu navegador no soporta el elemento de video.
+            </video>
+            <div class="card-img-overlay  d-flex flex-column justify-content-center align-items-center ">
+                <p class=" text-white mb-1" style="font-size: 60px;">Uyuni</p>
+                <p class="fs-6 text-white">The Perfect Place to Vacation</p>
+                <div class="col-9 mb-4">
+                  <input type="text" class="form-control" placeholder="Search Hotels" required onclick="showToast()">
+                </div>
+            </div>
+        </div> 
+        </div>
       </div>
-
-      
-    </div>
-
-    <div class="row ">
-      <div class="col-md-12">
-        <div class="card text-bg-dark border-light">
-          <img src="../assets/images/airplane.png" class="card-img w-100" alt="" style="object-fit: cover; height: 210px; filter: brightness(0.5);">
-          <div class="card-img-overlay mx-5 my-2 text-start">
-              <p class="card-title fs-2 mb-4">Where are you <br> flying to?</p>
-              
-              <p class="card-text mb-3"><button class="btn btn-outline-light" type="submit">Buy tickets</button></p>
-          </div>
+      <div class="row ">
+        <div class="col-md-12">
+          <div class="card text-bg-dark border-light">
+            <img src="../assets/images/airplane.png" class="card-img w-100" alt="" style="object-fit: cover; height: 230px; filter: brightness(0.5);">
+            <div class="card-img-overlay mx-md-5 mx-4 d-flex flex-column justify-content-center align-items-start">
+                <p class="card-title fs-1 mb-3">Where are you <br> flying to?</p>         
+                <p class="card-text mb-3"><button class="btn btn-outline-light" onclick="showToast()">Buy tickets</button></p>
+            </div>
+        </div>
+        </div>
       </div>
-      </div>
-    </div>
-  </main>
-  <footer class="pt-3  text-body-secondary border-top">
-    Created by Carlos Daniel &middot; &copy; 2023
-  </footer>
-</div>
+    </main>
+    <footer class="pt-3  text-body-secondary border-top">
+      Created by Carlos Daniel &middot; &copy; 2023
+    </footer>
+  </div>
 
-</div>
 
+
+<!--Componentes-->
 <!--Modals-->
 <!-- Scrollable modal -->
 <!-- User Settings -->
@@ -258,7 +202,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" tabindex="-1" id="modalAddNewRouteAddPlaces" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
@@ -271,32 +214,12 @@
           <div class="row g-2">
             <div class="col-md-12 position-relative mb-2">
               <div class="form-floating">
-                <input type="text" class="form-control" id="firstNameSettingsForm" placeholder="First name" required>
+                <input type="text" class="form-control" id="firstNameSettingsForm" placeholder="First name" disabled>
                 <label for="firstNameSettingsForm">Search</label>         
               </div>
             </div>
             <div class="col-md-12 position-relative" style="height: 300px; overflow-y: auto;">
-              
                 <ol class="list-group" id="listPlacesSecondModal">
-                  <!-- <li class="list-group-item">
-                    <div class="list-group list-group-horizontal">
-                      <div class="list-group-item btn btn-outline-primary d-flex align-items-center justify-content-center" onclick="addPlace()">
-                          <i class="bi bi-plus-circle fs-5 me-2"></i>
-                          Add
-                      </div>
-                      <div class="list-group-item">
-                          <p class="fs-5 mb-0" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Plaza 24 de Septiembre</p>
-                          <p class="mb-1" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi illum autem qui suscipit ab iure assumenda, facere est soluta necessitatibus asperiores deleniti eos ratione, deserunt beatae, maiores ad? Eius, nulla.</p>
-                          <a href="" class="icon-link text-decoration-none " data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
-                            Learn more
-                          </a>              
-                      </div>
-                    </div>
-                  </li> -->
-                  
-                  
-                 
-                  
                 </ol>
             </div>
             <div class="form-floating mb-3">
@@ -313,7 +236,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" tabindex="-1" id="modalAddNewRouteItinerary" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
@@ -324,28 +246,11 @@
       <div class="modal-body">
         <p>Hello <strong>@Carlos Daniel</strong>. We want to ensure you have the best possible experience, so we suggest organizing your tourist itinerary using the list below. This will allow us to fine-tune the details so you don't miss anything exciting and have time to enjoy to the fullest.</p>
         <ol class="list-group" style="height: 300px; overflow-y: auto;" id="listMyPlacesThridModal">
-          <!-- <li class="list-group-item d-flex align-items-center">
-            <div class="btn-group me-2" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-primary btn-lg">
-                <i class="bi bi-arrow-up-circle"></i>
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-lg">
-                <i class="bi bi-arrow-down-circle"></i>
-              </button>
-            </div>
-            <div class="ms-2 me-auto">
-              <p class="fs-5 mb-0" style="max-height: 100px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">Parque Urbano Santa Cruz (Parque El Arenal)</p>
-              <p class="mb-0"><i class="bi bi-clock"></i> 2-3 hours</p>
-            </div>
-            <button type="button" class="btn btn-outline-danger btn-lg">
-              <i class="bi bi-trash3"></i>
-            </button>
-          </li> -->
         </ol>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="email" readonly class="form-control-plaintext" id="plannedRouteThirdModal" placeholder="name@example.com" value="@username">
-        <label for="floatingPlaintextInput">Planned route by</label>
+        <div class="form-floating mb-3">
+          <input type="email" readonly class="form-control-plaintext" id="plannedRouteThirdModal" placeholder="name@example.com" value="@username">
+          <label for="floatingPlaintextInput">Planned route by</label>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAddNewRouteAddPlaces">Back</button>
@@ -354,7 +259,6 @@
     </div>
   </div>
 </div>
-
 <div class="modal fade" tabindex="-1" id="modalAddNewRouteSummary" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
     <div class="modal-content">
@@ -363,12 +267,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body"> 
-        <ol class="list-group list-group-numbered">
-          <li class="list-group-item">A list item</li>
-          <li class="list-group-item">A list item</li>
-          <li class="list-group-item">A list item</li>
-        </ol>
-        
+        <ol class="list-group list-group-numbered" id="listRouteSumaryFourthModal" style="height: 300px; overflow-y: auto;">
+        </ol>       
         <div class="form-floating mb-3">
           <input type="email" readonly class="form-control-plaintext" id="plannedRouteFourthModal" placeholder="name@example.com" value="@username">
           <label for="floatingPlaintextInput">Planned route by</label>
@@ -377,81 +277,6 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalAddNewRouteItinerary">Back</button>
         <button type="button" class="btn btn-outline-primary" onclick="saveRoute()">Save route</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Scrollable modal -->
-<div class="modal fade" tabindex="-1" id="modalTouristRoute" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <p class="modal-title fs-5">Sendero Histórico</p>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="accordion" id="accordionExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Accordion Item #1 - Complete 
-              </button>
-            </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                Accordion Item #2
-              </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Accordion Item #3
-              </button>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- Modal Warning -->
-<div class="modal fade" id="modalWarning" tabindex="-1" id="staticBackdrop" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Please check your information 🛑</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p id="modalMessage"></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark px-4" data-bs-dismiss="modal">Close <i class="bi bi-x-circle"></i></button>
       </div>
     </div>
   </div>
@@ -468,8 +293,19 @@
   </div>
 </div>
 
+<!-- Toast not available -->
+<div class="toast-container position-fixed bottom-0 start-50 translate-middle-x p-3">
+  <div id="toastNotAvailable" class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body">
+        Oops! It seems like this corner of the website is still in nap mode. We're working hard to wake it up. Come back soon!
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- OffCanvas -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="MyRoutes" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
     <p class="offcanvas-title fs-4" id="offcanvasExampleLabel">My Routes</p>
     <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
@@ -478,137 +314,155 @@
   </div>
   <div class="offcanvas-body">
     <!--Body of OffCanvas-->
-    <div class="list-group">
-      <a href="#" class="list-group-item list-group-item-action active" aria-current="true" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample2">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Sendero Histórico</p>
-
-          <small>In progress</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Descubre la fascinante historia de Santa Cruz de la Sierra a lo largo de este sendero, que te lleva a través de los hitos históricos más destacados de la ciudad. Desde antiguas plazas hasta edificios coloniales, cada paso te sumerge en el pasado que ha dado forma a esta encantadora región.</p>
-        <small>And some small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Viaje Cultural</p>
-          <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Sumérgete en la diversidad cultural de Santa Cruz de la Sierra a través de este viaje único. Desde coloridos mercados locales hasta eventos culturales vibrantes, experimentarás la rica mezcla de tradiciones que hacen de esta ciudad un crisol de culturas, donde la música, la danza y la gastronomía se entrelazan en una experiencia inolvidable.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Sendero del Arte</p>
-          <small class="text-body-secondary">5 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Un recorrido que destaca la efervescencia artística de Santa Cruz de la Sierra. Desde galerías contemporáneas hasta murales callejeros, cada rincón de este sendero está impregnado de expresiones creativas. Disfruta de la diversidad de estilos que reflejan la creatividad y la vitalidad del escenario artístico local.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Ruta del Renacimiento</p>
-          <small class="text-body-secondary">1 week ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Esta ruta te lleva a través de los lugares que han experimentado un renacimiento en Santa Cruz de la Sierra. Desde revitalizadas áreas urbanas hasta proyectos de desarrollo sostenible, descubrirás cómo la ciudad ha renovado su energía y ha abrazado el futuro sin perder de vista su rica herencia.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Camino del Viajero</p>
-          <small class="text-body-secondary">2 weeks ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Para los aventureros y amantes de la naturaleza, este camino te lleva por los tesoros naturales de los alrededores de Santa Cruz de la Sierra. Desde exuberantes bosques hasta paisajes montañosos, sigue el camino del viajero para explorar la belleza natural que define esta región boliviana.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Viaje Cultural</p>
-          <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Sumérgete en la diversidad cultural de Santa Cruz de la Sierra a través de este viaje único. Desde coloridos mercados locales hasta eventos culturales vibrantes, experimentarás la rica mezcla de tradiciones que hacen de esta ciudad un crisol de culturas, donde la música, la danza y la gastronomía se entrelazan en una experiencia inolvidable.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Sendero del Arte</p>
-          <small class="text-body-secondary">5 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Un recorrido que destaca la efervescencia artística de Santa Cruz de la Sierra. Desde galerías contemporáneas hasta murales callejeros, cada rincón de este sendero está impregnado de expresiones creativas. Disfruta de la diversidad de estilos que reflejan la creatividad y la vitalidad del escenario artístico local.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Ruta del Renacimiento</p>
-          <small class="text-body-secondary">1 week ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Esta ruta te lleva a través de los lugares que han experimentado un renacimiento en Santa Cruz de la Sierra. Desde revitalizadas áreas urbanas hasta proyectos de desarrollo sostenible, descubrirás cómo la ciudad ha renovado su energía y ha abrazado el futuro sin perder de vista su rica herencia.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Camino del Viajero</p>
-          <small class="text-body-secondary">2 weeks ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Para los aventureros y amantes de la naturaleza, este camino te lleva por los tesoros naturales de los alrededores de Santa Cruz de la Sierra. Desde exuberantes bosques hasta paisajes montañosos, sigue el camino del viajero para explorar la belleza natural que define esta región boliviana.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Viaje Cultural</p>
-          <small class="text-body-secondary">3 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Sumérgete en la diversidad cultural de Santa Cruz de la Sierra a través de este viaje único. Desde coloridos mercados locales hasta eventos culturales vibrantes, experimentarás la rica mezcla de tradiciones que hacen de esta ciudad un crisol de culturas, donde la música, la danza y la gastronomía se entrelazan en una experiencia inolvidable.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Sendero del Arte</p>
-          <small class="text-body-secondary">5 days ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Un recorrido que destaca la efervescencia artística de Santa Cruz de la Sierra. Desde galerías contemporáneas hasta murales callejeros, cada rincón de este sendero está impregnado de expresiones creativas. Disfruta de la diversidad de estilos que reflejan la creatividad y la vitalidad del escenario artístico local.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Ruta del Renacimiento</p>
-          <small class="text-body-secondary">1 week ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Esta ruta te lleva a través de los lugares que han experimentado un renacimiento en Santa Cruz de la Sierra. Desde revitalizadas áreas urbanas hasta proyectos de desarrollo sostenible, descubrirás cómo la ciudad ha renovado su energía y ha abrazado el futuro sin perder de vista su rica herencia.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-      <a href="#" class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-between">
-          <p class="fs-5 mb-1">Camino del Viajero</p>
-          <small class="text-body-secondary">2 weeks ago</small>
-        </div>
-        <p class="mb-1 text-truncate overflow-hidden">Para los aventureros y amantes de la naturaleza, este camino te lleva por los tesoros naturales de los alrededores de Santa Cruz de la Sierra. Desde exuberantes bosques hasta paisajes montañosos, sigue el camino del viajero para explorar la belleza natural que define esta región boliviana.</p>
-        <small class="text-body-secondary">And some muted small print.</small>
-      </a>
-    </div>
+    <ol class="list-group mb-4" id="listAllRoutes">
+    </ol>
   </div>
 </div>
 
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample2" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="routeDetails" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <p class="offcanvas-title  fs-4" id="offcanvasExampleLabel">Offcanvas</p>
-    <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample">
+    <div>
+      <small>Name</small>
+      <p class="offcanvas-title  fs-4" id="routeNameViewRouteInfo">Route Name</p>
+    </div>
+    <button type="button" class="btn" data-bs-toggle="offcanvas" data-bs-target="#MyRoutes" aria-controls="offcanvasExample">
       <i class="bi bi-arrow-left fs-5"></i>
     </button>
   </div>
   <div class="offcanvas-body">
-    <div>
-      Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-    </div>
-    <div class="dropdown mt-3">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-        Dropdown button
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+    <small><i class="bi bi-clock"></i> Approximately</small>
+    <p>1-2 hours</p>
+
+      <small>Description</small>
+      <p id="routeDescriptionViewRouteInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui velit harum, facere fugiat id voluptas quas est, repellat modi, laudantium labore nisi. Totam facilis nulla vel optio atque repudiandae soluta?</p>
+
+      
+
+      <small>Created by</small>
+      <p id="routeUserViewRouteInfo">@Carlos Daniel</p>
+
+      <hr>
+
+      <p class="mb-2">Remaining</p>
+      <ol class="list-group mb-4" id="routeRemainingViewRouteInfo">
+        <li class="list-group-item">
+          <div class="list-group list-group-horizontal">
+            <div class="list-group-item btn btn-outline-primary d-flex align-items-center justify-content-center" onmouseenter="remainingHandleHover(this, true)" onmouseleave="remainingHandleHover(this, false)">
+                <i class="bi bi-plus-circle fs-5 me-2"></i>
+                Complete
+            </div>
+            <div class="list-group-item">
+                <p class="fs-5 mb-0">Lugar Uno</p>
+                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="" class="icon-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+                    Learn more
+                </a>              
+            </div>
+        </div>
+        </li>
+        
+        <li class="list-group-item">
+          <div class="list-group list-group-horizontal">
+            <div class="list-group-item btn btn-outline-primary d-flex align-items-center justify-content-center" onmouseenter="remainingHandleHover(this, true)" onmouseleave="remainingHandleHover(this, false)">
+              <i class="bi bi-plus-circle fs-5 me-2"></i>
+                Complete
+            </div>
+            <div class="list-group-item">
+                <p class="fs-5 mb-0">Lugar Uno</p>
+                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="" class="icon-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+                    Learn more
+                </a>              
+            </div>
+        </div>
+        </li>
+      </ol>
+      
+      <hr>
+
+      <p class="mb-2">Visited</p>
+      <ol class="list-group" id="routeVisitedViewRouteInfo">
+        <li class="list-group-item">
+          <div class="list-group list-group-horizontal">
+            <div class="list-group-item btn btn-outline-danger d-flex align-items-center justify-content-center" onmouseenter="visitedHandleHover(this, true)" onmouseleave="visitedHandleHover(this, false)">
+              <i class="bi bi-check2-circle fs-4 me-2"></i>
+                Finalized
+            </div>
+            <div class="list-group-item">
+                <p class="fs-5 mb-0">Lugar Uno</p>
+                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="" class="icon-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+                    Learn more
+                </a>              
+            </div>
+        </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="list-group list-group-horizontal">
+            <div class="list-group-item btn btn-outline-danger d-flex align-items-center justify-content-center" onmouseenter="visitedHandleHover(this, true)" onmouseleave="visitedHandleHover(this, false)">
+              <i class="bi bi-check2-circle fs-4 me-2"></i>
+                Finalized
+            </div>
+            <div class="list-group-item">
+                <p class="fs-5 mb-0">Lugar Uno</p>
+                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="" class="icon-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+                    Learn more
+                </a>              
+            </div>
+        </div>
+        </li>
+
+        <li class="list-group-item">
+          <div class="list-group list-group-horizontal">
+            <div class="list-group-item btn btn-outline-danger d-flex align-items-center justify-content-center" onmouseenter="visitedHandleHover(this, true)" onmouseleave="visitedHandleHover(this, false)">
+              <i class="bi bi-check2-circle fs-4 me-2"></i>
+                Finalized
+            </div>
+            <div class="list-group-item">
+                <p class="fs-5 mb-0">Lugar Uno</p>
+                <p class="mb-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="" class="icon-link text-decoration-none" data-bs-toggle="modal" data-bs-target="#modalProfileSettings">
+                    Learn more
+                </a>              
+            </div>
+        </div>
+        </li>
+      </ol>
+      
+
+  </div>
+</div>
+
+<!--Modal PlaceInformation-->
+<div class="modal fade" tabindex="-1" id="modalPlaceInformation" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <small>Name</small>
+          <p class="modal-title fs-5" id="placeNameViewInfo">24 de Septiembre Square</p>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="placeDescriptionViewInfo">
+
+        <img src="img2.jpg" alt="" class="w-100">
+
+        <hr>
+
+        <small>Description</small>
+        <p id="">24 de Septiembre Square is the heart of Santa Cruz de la Sierra, commemorating the independence events of September 24, 1810.</p>
+        
+        <div class="col-12 text-center">
+          <a href="#" class="btn btn-outline-primary py-2 mt-4 mb-3"><i class="bi bi-geo-alt-fill"></i> Location</a>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>
@@ -626,8 +480,6 @@
 <script src="scripts/userSettings.js"></script>
 <script src="scripts/addNewRoute.js"></script>
 <script src="scripts/carrousel.js"></script>
-<script>window.onload = obtenerUbicacion()</script>
-<script>window.onload = getUserPlacesVisited()</script>
 <script>window.onload = getPlaces()</script>
 <script>window.onload = getCarrouselInformation()</script>
 </body>

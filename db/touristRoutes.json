@@ -1,0 +1,9 @@
+{
+    "touristRoutes": {
+      "description": "string",
+      "name": "string",
+      "places": "array of string",
+      "userRef": "/users/string"
+    }
+  }
+  

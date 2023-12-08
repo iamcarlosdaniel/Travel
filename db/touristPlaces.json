@@ -1,0 +1,30 @@
+{
+    "touristPlaces": {
+      "creationDate": "string",
+      "description": "string",
+      "duration": "string",
+      "feesAndCosts": "string",
+      "images": "array of string",
+      "lastUpdateDate": "string",
+      "location": {
+        "city": "string",
+        "country": "string",
+        "stateProvince": "string"
+      },
+      "mainAttractions": "array of string",
+      "operatingHours": "string",
+      "placeName": "string",
+      "placeType": "string",
+      "rating": "number",
+      "recommendedActivities": "array of string",
+      "relatedLinks": {
+        "officialWebsite": "string",
+        "socialMedia": "string"
+      },
+      "touristInfrastructure": {
+        "accommodation": "array of string",
+        "dining": "array of string"
+      }
+    }
+  }
+  

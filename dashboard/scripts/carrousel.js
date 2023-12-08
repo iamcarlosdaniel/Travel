@@ -19,7 +19,7 @@ function getCarrouselInformation() {
       // Rellena el contenido del carrusel-item con los datos del documento
       carouselItem.innerHTML = `
         <div class="card text-bg-dark border-light">
-          <img src="${doc.data().images[0]}" class="card-img w-100" alt="" style="object-fit: cover; height: 230px; filter: brightness(0.5);">
+          <img src="${doc.data().images[0]}" class="card-img w-100" alt="" style="object-fit: cover; height: 230px; filter: brightness(0.4);">
           <div class="card-img-overlay mx-5">
             <p class="card-title fs-3 mb-0 text-truncate overflow-hidden">${doc.data().placeName}</p>
             <p class="card-text">${ratingStars}</p>

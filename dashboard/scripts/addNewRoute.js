@@ -81,6 +81,9 @@ function getListMyPlaces() {
     const listItem = document.getElementById('listMyPlacesThridModal');
     listItem.innerHTML = ''; // Limpiar contenido previo
 
+    const listItemElementSumary = document.getElementById('listRouteSumaryFourthModal');
+    listItemElementSumary.innerHTML = ''; // Limpiar contenido previo
+
     places.forEach((placeId, index) => {
         // Comprueba si los datos del lugar ya están en el caché
         if (placeDataCache[placeId]) {
@@ -114,6 +117,11 @@ function renderPlaceMyPlacesSection(index, placeData) {
     const listItemElement = document.createElement('li');
     listItemElement.className = 'list-group-item d-flex align-items-center';
 
+    //ROUTE SUMARY
+    // Crear un nuevo elemento de lista
+    const listItemElementSumary = document.createElement('li');
+    listItemElementSumary.className = 'list-group-item';
+
     // Rellenar el contenido del elemento de lista con los datos del lugar
     listItemElement.innerHTML = `
         <div class="btn-group me-2" role="group" aria-label="Basic example">
@@ -133,8 +141,13 @@ function renderPlaceMyPlacesSection(index, placeData) {
         </button>
     `;
 
+    listItemElementSumary.innerHTML = `
+        ${placeData.placeName}
+    `;
+
     // Agregar el elemento de lista al contenedor
     document.getElementById('listMyPlacesThridModal').appendChild(listItemElement);
+    document.getElementById('listRouteSumaryFourthModal').appendChild(listItemElementSumary);
 }
 
 function removePlace(placeId) {
@@ -196,6 +209,7 @@ function saveRoute() {
                 name: routeName,
                 description: routeDescription,
                 places: places,
+                remainingPlaces: places,
                 userRef: db.collection('users').doc(userId)
             })
             .then(() => {
@@ -215,6 +229,8 @@ function saveRoute() {
 
                 // Cierra el modal
                 myModal.hide();
+
+                getAllListRoutes(userUid);
 
                 document.getElementById("toastMessage").innerHTML = "Route saved successfully.";
                 toastWarning.show();
